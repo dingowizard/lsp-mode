@@ -199,11 +199,13 @@ current runtime."
 
 (defun lsp-fsharp--server-download-url (version)
   "Return url for .zip file to download for given VERSION, depending on `lsp-fsharp-server-runtime'."
-  (concat "https://github.com/fsharp/FsAutoComplete/releases/download"
-          "/" version
-          "/" (if (eq lsp-fsharp-server-runtime 'net-core)
-                  "fsautocomplete.netcore.zip"
-                "fsautocomplete.zip")))
+  (message "Called my server-download with argument %s" version)
+  (concat "https://codeload.github.com/fsharp/FsAutoComplete/zip/refs/tags/v0.50.0"
+          "/FsAutoComplete-0.50.0.zip"))
+          ;; "/" version
+          ;; "/" (if (eq lsp-fsharp-server-runtime 'net-core)
+          ;;         "fsautocomplete.netcore.zip"
+          ;;       "fsautocomplete.zip")))
 
 (defun lsp-fsharp--change-permissions (install-dir-full)
   (unless (eq system-type 'windows-nt) ; Windows does not have chmod
